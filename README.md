@@ -56,27 +56,34 @@ XGBRegressor(
 )
 ---
 
-## 📈 Evaluation
+## 📈 Model Evaluation
 
 - ✅ Trained on **80%** of historical time-series data  
-- ✅ Tested on the **most recent 20%**
-- ✅ Used `np.expm1()` to **invert log-transformed predictions**
+- ✅ Tested on the **most recent 20%**  
+- ✅ Applied log transformation using `np.log1p()` for target stability  
+- ✅ Used `np.expm1()` to **invert predictions** after training
 
-### 📊 Metrics
+---
 
-| Metric | Value    |
-|--------|----------|
+## 📊 Metrics & Interpretation
+
+| Metric | Value     |
+|--------|-----------|
 | RMSE   | **87.15** |
 | SMAPE  | **48.27%** |
 
-- 📉 **RMSE** indicates the model **captures sales magnitude** with reasonable accuracy
-- ⚠️ **SMAPE** is elevated due to:
-  - Sparse or near-zero sales days  
-  - Sudden spikes not explained by available features  
-- 🔮 Performance is expected to improve by adding:
-  - **Holiday flags**
-  - **Promotions/events**
-  - **Category/product-level breakdowns**
+### 📉 What This Means
 
-## 📊 Forecast Plot
-<img width="1539" height="616" alt="image" src="https://github.com/user-attachments/assets/f5e3c82e-ac61-4827-8efc-3cf268ebc6ba" />
+- **RMSE** shows that the model captures the **magnitude of daily sales** effectively  
+- **SMAPE** is elevated due to:
+  - Extremely low sales days inflating percent errors  
+  - Irregular demand spikes with no promo/holiday signals
+
+### 🔧 How to Improve
+
+- Add **holiday/promotion flags**
+- Include **product category or region segmentation**
+- Experiment with **LSTM or hybrid models**
+
+
+
