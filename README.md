@@ -42,48 +42,47 @@ This can help retail businesses optimize:
 
 📌 Target `venda` was log-transformed to stabilize variance.
 
----
-
+## 🤖 Model: XGBoost Regressor
 ## 🤖 Model: XGBoost Regressor
 
-```python
+python
 XGBRegressor(
     n_estimators=100,
     max_depth=4,
     learning_rate=0.05,
     subsample=0.8,
-    colsample_bytree=0.8
-)
----
+    colsample_bytree=0.8)
 
 ## 📈 Model Evaluation
 
 - ✅ Trained on **80%** of historical time-series data  
 - ✅ Tested on the **most recent 20%**  
 - ✅ Applied log transformation using `np.log1p()` for target stability  
-- ✅ Used `np.expm1()` to **invert predictions** after training
+- ✅ Used `np.expm1()` to **invert predictions** after training  
 
 ---
-
 ## 📊 Metrics & Interpretation
 
-| Metric | Value     |
-|--------|-----------|
-| RMSE   | **87.15** |
+### 📋 Metrics
+
+| Metric | Value      |
+|--------|------------|
+| RMSE   | **87.15**  |
 | SMAPE  | **48.27%** |
+
+---
 
 ### 📉 What This Means
 
 - **RMSE** shows that the model captures the **magnitude of daily sales** effectively  
-- **SMAPE** is elevated due to:
-  - Extremely low sales days inflating percent errors  
-  - Irregular demand spikes with no promo/holiday signals
+- **SMAPE** is elevated due to:  
+  - 🔴 Extremely low sales days inflating percent errors  
+  - 🟠 Irregular demand spikes with no promo/holiday signals  
 
-### 🔧 How to Improve
 
-- Add **holiday/promotion flags**
-- Include **product category or region segmentation**
-- Experiment with **LSTM or hybrid models**
+- 🏷️ Add **holiday/promotion flags**  
+- 🧩 Include **product category or region segmentation**  
+- 🔁 Experiment with **LSTM or hybrid models**
 
 
 
