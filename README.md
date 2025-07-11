@@ -54,3 +54,29 @@ XGBRegressor(
     subsample=0.8,
     colsample_bytree=0.8
 )
+---
+
+## 📈 Evaluation
+
+- ✅ Trained on **80%** of historical time-series data  
+- ✅ Tested on the **most recent 20%**
+- ✅ Used `np.expm1()` to **invert log-transformed predictions**
+
+### 📊 Metrics
+
+| Metric | Value    |
+|--------|----------|
+| RMSE   | **87.15** |
+| SMAPE  | **48.27%** |
+
+- 📉 **RMSE** indicates the model **captures sales magnitude** with reasonable accuracy
+- ⚠️ **SMAPE** is elevated due to:
+  - Sparse or near-zero sales days  
+  - Sudden spikes not explained by available features  
+- 🔮 Performance is expected to improve by adding:
+  - **Holiday flags**
+  - **Promotions/events**
+  - **Category/product-level breakdowns**
+
+## 📊 Forecast Plot
+<img width="1539" height="616" alt="image" src="https://github.com/user-attachments/assets/f5e3c82e-ac61-4827-8efc-3cf268ebc6ba" />
